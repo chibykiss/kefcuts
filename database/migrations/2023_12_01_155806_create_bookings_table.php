@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('phone');
             $table->text('message')->nullable();
+            $table->unique(['date','time_id'],'unique_booking');
             $table->foreign('time_id')->references('id')->on('times');
             $table->timestamps();
         });
