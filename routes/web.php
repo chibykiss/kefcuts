@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\StoreBookingController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,8 +17,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
+
+Route::get('/appointment', AppointmentController::class)->name('appointment');
+
+Route::post('book', StoreBookingController::class)->name('booking.store');
 
 Route::get('storage', function(){
     return database_path();
