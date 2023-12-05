@@ -18,18 +18,19 @@ class AppointmentController extends Controller
         //checked times that have been booked for today
         $bookedTimes = Booking::where('date',date("Y-m-d"))->pluck('time_id');
 
-        return $times;
+        //return $times;
 
         $availableTimes = $times->reject(function($time) use ($bookedTimes){
             return $bookedTimes->contains($time->id);
         });
 
+        //return $availableTimes;
         
 
         // if(date('D') !== 'Sat' && date('D') !== 'Sun' && date('D') !== 'Fri'){
         //     $times = array_splice($times, 1, 23); 
         // }
         //return $times;
-        return view('book', ['categories' => $categories,'times' => $times]);
+        return view('book', ['categories' => $categories,'times' => $availableTimes]);
     }
 }

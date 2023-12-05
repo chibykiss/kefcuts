@@ -43,9 +43,10 @@ class MigrateInOrder extends Command
             $migrationName = trim($migration);
             $path = $migrationName;
             $this->call('migrate:refresh', [
-             '--path' => $path ,
-             '--seed' => true,         
+             '--path' => $path ,       
             ]);
         }
+
+        $this->call('db:seed');
     }
 }

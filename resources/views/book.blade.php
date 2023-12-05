@@ -34,7 +34,8 @@
                         <h3>{{ $error }}</h3>   
                     @endforeach
                 @endif
-                <form name="contactForm" action="{{ route('booking.store') }}" id='contact_form' class="form-border" method="post">
+                {{-- action="{{ route('booking.store') }}" --}}
+                <form name="contactForm"  id='contact_form' class="form-border" method="post">
                     @csrf
                         @if($errors->any())
                             @foreach ($errors->all() as $error)
@@ -57,7 +58,7 @@
                                     @foreach ($category->services as $service)
                                         <div class="form-group">
                                         <div>
-                                            <input type="checkbox" name="service_types[]" id="s_a1" value="{{ $service->id }}">
+                                            <input type="checkbox" data-price="{{ $service->price }}" name="service_types" id="s_a1" value="{{ $service->id }}">
                                             <label for="s_a1">{{ $service->name }}</label>
                                         </div>
                                         <p>{{ $service->price }}</p>
@@ -76,7 +77,7 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <h3 class="s2">Select Date</h3>
-                                <input type="date" name="date" id="date" class="form-control" min="1997-01-01" required />
+                                <input type="date" name="date" id="date" class="form-control" min="1997-01-01" />
                                 <div class="spacer-single"></div>
                                 <h3 class="s2">Select Time</h3>
                                 <div class="custom_radio">
@@ -100,17 +101,17 @@
                             <div class="col-lg-6">
                                 <div id='name_error' class='error'>Please enter your name.</div>
                                 <div class="mb25">
-                                    <input type='text' name='name' id='name' class="form-control" placeholder="Your Name" required>
+                                    <input type='text' name='name' id='name' class="form-control" placeholder="Your Name">
                                 </div>
 
                                 <div id='email_error' class='error'>Please enter your valid E-mail ID.</div>
                                 <div class="mb25">
-                                    <input type='email' name='email' id='email' class="form-control" placeholder="Your Email" required>
+                                    <input type='email' name='email' id='email' class="form-control" placeholder="Your Email">
                                 </div>
 
                                 <div id='phone_error' class='error'>Please enter your phone number.</div>
                                 <div class="mb25">
-                                    <input type='text' name='phone' id='phone' class="form-control" placeholder="Your Phone" required>
+                                    <input type='text' name='phone' id='phone' class="form-control" placeholder="Your Phone">
                                 </div>
                             </div>
                             <div class="col-lg-6">
@@ -158,6 +159,8 @@
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script src="{{ asset('js/plugins.js') }}"></script>
 <script src="{{ asset('js/payment.js') }}"></script>
+<script src="https://js.paystack.co/v1/inline.js"></script>
+<script src="{{ asset('js/form.js') }}"></script>
 @notifyJs
 </body>
 </html>
