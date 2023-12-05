@@ -39,7 +39,7 @@ $(function()
               if(!data){
                 return payWithPaystack(totalPrice,dataObject);
               }
-              notify('error',`time has been booked`,'warning')
+              notify("Already Booked","time has been booked","warning")
           },
           error: function (xhr, exception, err) {
             console.log(err);
@@ -82,7 +82,7 @@ $(function()
           data: payload,
           success: function (data) {
              console.log(data);
-            return notify('sucess','you have booked a session sucessfully','success')
+            return notify("Session booked","you have booked a session sucessfully","success")
           },
           error: function (xhr, exception, err) {
             console.log(err);

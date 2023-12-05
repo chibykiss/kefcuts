@@ -14,6 +14,7 @@
     <link href="{{ asset('test/coloring.css') }}" rel="stylesheet" type="text/css" >
      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/dark.css">
+    <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
     @notifyCss
     <!-- color scheme -->
     <link id="colors" href="{{ asset('test/colors/scheme-01.css') }}" rel="stylesheet" type="text/css" >
