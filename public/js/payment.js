@@ -1,35 +1,54 @@
-
+$.ajaxSetup({
+  headers: {
+      'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+  }
+});
 config = {
     defaultDate: "today",
     onChange: function(selectedDates, dateStr, instance) {
-      var defaultDate = selectedDates[0].getDay();
-      var opt_830AM = document.getElementById('opt_830');
-      var opt_930PM = document.getElementById('opt_930');
-      var opt_10PM = document.getElementById('opt_10');
-      var opt_9pm = document.getElementById('opt_9');
-      var opt_830PM = document.getElementById ('opt_830PM') 
-    
-      if (defaultDate >= 1 && defaultDate < 5) {
-        opt_10PM.style.display = 'none';
-        opt_930PM.style.display = 'none';
-        opt_830AM.style.display = 'none';
-        opt_830PM.style.display = 'none'
-        opt_9pm.style.display = 'none'
-      }else{
-        opt_10PM.style.display = 'block';
-        opt_930PM.style.display = 'block';
-        opt_830AM.style.display = 'block';
-        opt_830PM.style.display = 'block'
-        opt_9pm.style.display = 'block'
-      }
+        //console.log(dateStr);
+        $.ajax({
+          url: '/appointment',
+          //dataType: "json",
+          type: "Post",
+          async: true,
+          data: {
+              'date' : dateStr
+           },
+          success: function (data) {
+             //console.log(data);
+             $('#time-container').html(data);
+          },
+          error: function (xhr, exception, err) {
+            console.log(err);
+              //var msg = "";
+              // if (xhr.status === 0) {
+              //     msg = "Not connect.\n Verify Network." + xhr.responseText;
+              // } else if (xhr.status == 404) {
+              //     msg = "Requested page not found. [404]" + xhr.responseText;
+              // } else if (xhr.status == 500) {
+              //     msg = "Internal Server Error [500]." +  xhr.responseText;
+              // } else if (exception === "parsererror") {
+              //     msg = "Requested JSON parse failed.";
+              // } else if (exception === "timeout") {
+              //     msg = "Time out error." + xhr.responseText;
+              // } else if (exception === "abort") {
+              //     msg = "Ajax request aborted.";
+              // } else {
+              //     msg = "Error:" + xhr.status + " " + xhr.responseText;
+              // }
+             
+          }
+      }); 
+  
     },    
     minDate: "today",
-    "disable": [
-        function(date) {
-            return (date.getDay() === 0 );
+    // "disable": [
+    //     function(date) {
+    //         return (date.getDay() === 0 );
 
-        }
-    ],
+    //     }
+    // ],
     "locale": {
         "firstDayOfWeek": 1 
     }

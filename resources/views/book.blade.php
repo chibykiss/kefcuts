@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="_token" content="{{ csrf_token() }}">
     <title>Kefcuts - Book Appointment</title>
     <link href="test/bootstrap.min.css" rel="stylesheet" type="text/css" id="bootstrap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
     <!-- <link href="test/mdb.min.css" rel="stylesheet" type="text/css" id="mdb" > -->
     <!-- <link href="test/plugins.css" rel="stylesheet" type="text/css" > -->
     <link href="{{ asset('test/style.css') }}" rel="stylesheet" type="text/css" >
@@ -76,10 +78,10 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <h3 class="s2">Select Date</h3>
-                                <input type="date" name="date" id="date" class="form-control" min="1997-01-01" required />
+                                <input type="date" name="date" id="date" class="form-control" required />
                                 <div class="spacer-single"></div>
                                 <h3 class="s2">Select Time</h3>
-                                <div class="custom_radio">
+                                <div class="custom_radio" id="time-container">
                                 @if(!empty($times))
                                     @foreach ($times as $time)
                                         <div class="radio-opt">
