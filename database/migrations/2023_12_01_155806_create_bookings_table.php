@@ -13,14 +13,14 @@ return new class extends Migration
     {
         Schema::create('bookings', function (Blueprint $table) {
             $table->id();
-            $table->string('email')->unique();
+            $table->string('email');
             $table->string('ref')->unique();
             $table->date('date');
             $table->unsignedBigInteger('time_id');
             $table->string('name');
             $table->string('phone');
             $table->text('message')->nullable();
-            $table->unique(['date','time_id'],'unique_booking');
+            $table->unique(['date','time_id'],'unique_book');
             $table->foreign('time_id')->references('id')->on('times');
             $table->timestamps();
         });

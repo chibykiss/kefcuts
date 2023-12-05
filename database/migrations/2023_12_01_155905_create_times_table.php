@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('times', function (Blueprint $table) {
             $table->id();
             $table->string('time');
+            $table->string('hour_time');
             $table->string('available_for');
             $table->timestamps();
         });

@@ -20,7 +20,8 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/appointment', AppointmentController::class)->name('appointment');
+Route::get('/appointment', [AppointmentController::class,'index'])->name('appointment');
+Route::post('/appointment', [AppointmentController::class,'getAvailableTime'])->name('appointment');
 
 Route::post('book', StoreBookingController::class)->name('booking.store');
 
