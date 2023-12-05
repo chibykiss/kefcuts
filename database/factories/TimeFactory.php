@@ -63,5 +63,3 @@ class TimeFactory extends Factory
         ];
     }
 }
-
-the times table stores the available times for booking with contains a time from 8:00am to 10:00pm, where the time sequence is 8:00am, 8:30am, 9:00am, 9:30am etc to 10:00pm. This time sequence is applicable for  friday to sunday, but for monday to thursday the booking time should begin from 9:00am and end 8:00pm. how can i implement this using the function above
