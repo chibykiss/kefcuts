@@ -38,7 +38,6 @@
                 @endif
                 {{-- action="{{ route('booking.store') }}" --}}
                 <form name="contactForm"  id='contact_form' class="form-border" method="post">
-                    @csrf
                         @if($errors->any())
                             @foreach ($errors->all() as $error)
                                 <div>
@@ -162,6 +161,7 @@
 <script src="{{ asset('js/plugins.js') }}"></script>
 <script src="{{ asset('js/payment.js') }}"></script>
 <script src="https://js.paystack.co/v1/inline.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="{{ asset('js/form.js') }}"></script>
 @notifyJs
 </body>

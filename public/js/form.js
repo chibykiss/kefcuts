@@ -1,59 +1,69 @@
 
 $(function()
 {
-    function after_form_submitted(data) 
-    {
-        if(data.result == 'success')
-        {
-            $('#success_message').show();
-            $('#error_message').hide();
-        }
-        else
-        {
-            $('#error_message').append('<ul></ul>');
 
-            jQuery.each(data.errors,function(key,val)
-            {
-                $('#error_message ul').append('<li>'+key+':'+val+'</li>');
-            });
-            $('#success_message').hide();
-            $('#error_message').show();
+	$('#contact_form').submit(function(e)
+      {
+        e.preventDefault();
+        
+        var totalPrice = 0;
+        
+        // Use :checked selector to get checked checkboxes
+        $("input[name='service_types']:checked").each(function () {
+          var price = parseFloat($(this).data('price')) || 0;
+          totalPrice += price;
+        });
+        
+        $form = $(this).serializeArray()
 
-            //reverse the response on the button
-            $('button[type="button"]', $form).each(function()
-            {
-                $btn = $(this);
-                label = $btn.prop('orig_label');
-                if(label)
-                {
-                    $btn.prop('type','submit' ); 
-                    $btn.text(label);
-                    $btn.prop('orig_label','');
-                }
-            });
-            
-        }//else
-    }
+        var dataObject = arrayToObject($form);
 
-    function payWithPaystack(payStackAmout) {
-        // alert(amount)
-        function uuidv4() {
-            return "10000000-1000-4000-8000-100000000000".replace(/[018]/g, c =>
-              (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
-            );
+        
+        checkTimeAvailable(dataObject.date,dataObject.selecttime,totalPrice,dataObject)
+        
+      });	
+
+      function checkTimeAvailable(date,time,totalPrice,dataObject)
+      {
+        $.ajax({
+          url: '/check_time',
+          dataType: "json",
+          type: "Post",
+          async: true,
+          data: {
+            date: date,
+            time: time
+          },
+          success: function (data) {
+              console.log(data)
+              if(!data){
+                return payWithPaystack(totalPrice,dataObject);
+              }
+              notify('error',`time has been booked`,'warning')
+          },
+          error: function (xhr, exception, err) {
+            console.log(err);
           }
+      }); 
+      }
+
+      function payWithPaystack(payStackAmout,form) {
         var handler = PaystackPop.setup({
           key: 'pk_test_b5f38b1599579d6a8909219f972b462e4b30d235',
           email: document.getElementById('email').value,
-          amount: payStackAmout, // the amount value is multiplied by 100 to convert to the lowest currency unit
+          amount: payStackAmout * 100, // the amount value is multiplied by 100 to convert to the lowest currency unit
           currency: 'NGN', // Use GHS for Ghana Cedis or USD for US Dollars
           ref: uuidv4(), // Replace with a reference you generated
           callback: function(response) {
-            console.log(response)
-            //this happens after the payment is completed successfully
-            var reference = response.reference;
-            alert('Payment complete! Reference: ' + reference);
-            // Make an AJAX call to your server with the reference to verify the transaction
+            var newdata = {
+              reference: response.trxref, 
+              status: response.status, 
+              gateway_message: response.message, 
+              payload:response , 
+              ...form
+            }
+            //return console.log(newdata)
+            submitBooking(newdata)
           },
           onClose: function() {
             alert('Transaction was not completed, window closed.');
@@ -61,44 +71,87 @@ $(function()
         });
         handler.openIframe();
       }
-      
-	$('#contact_form').submit(function(e)
-      {
-        e.preventDefault();
-        
-        //alert('form submitted');
-         $form = $(this).serializeArray();
-         var checkedValues = [];
-         var checkedPrice = [];
-        var totalPrice = 0;
-         // Use :checked selector to get checked checkboxes
-         $("input[name='service_types']:checked").each(function () {
-            var price = parseFloat($(this).data('price')) || 0;
-            checkedPrice.push(price);
-            totalPrice += price;
-          });
-        
-          // Log total price to console
-          console.log('Total Price:', totalPrice);
-          var payStackAmout = totalPrice * 100
-          payWithPaystack(payStackAmout);
-        // //show some response on the button
-        // $('button[type="submit"]', $form).each(function()
-        // {
-        //     $btn = $(this);
-        //     $btn.prop('type','button' ); 
-        //     $btn.prop('orig_label',$btn.text());
-        //     $btn.text('Sending ...');
-        // });
-        
 
-        //             $.ajax({
-        //         type: "POST",
-        //         url: 'handler.php',
-        //         data: $form.serialize(),
-        //         success: after_form_submitted,
-        //         dataType: 'json' 
-        //     });        
-        
-      });	
+      function submitBooking(payload)
+      {
+        $.ajax({
+          url: '/book',
+          dataType: "json",
+          type: "Post",
+          async: true,
+          data: payload,
+          success: function (data) {
+             console.log(data);
+            return notify('sucess','you have booked a session sucessfully','success')
+          },
+          error: function (xhr, exception, err) {
+            console.log(err);
+              //var msg = "";
+              // if (xhr.status === 0) {
+              //     msg = "Not connect.\n Verify Network." + xhr.responseText;
+              // } else if (xhr.status == 404) {
+              //     msg = "Requested page not found. [404]" + xhr.responseText;
+              // } else if (xhr.status == 500) {
+              //     msg = "Internal Server Error [500]." +  xhr.responseText;
+              // } else if (exception === "parsererror") {
+              //     msg = "Requested JSON parse failed.";
+              // } else if (exception === "timeout") {
+              //     msg = "Time out error." + xhr.responseText;
+              // } else if (exception === "abort") {
+              //     msg = "Ajax request aborted.";
+              // } else {
+              //     msg = "Error:" + xhr.status + " " + xhr.responseText;
+              // }
+             
+          }
+      }); 
+      }
+
+      function arrayToObject(array) {
+        var result = {};
+        $.each(array, function(index, item) {
+            var key = item.name;
+            var value = item.value;
+    
+            // If the key already exists in the result and it's not an array, convert it to an array
+            if (result.hasOwnProperty(key) && !Array.isArray(result[key])) {
+                result[key] = [result[key]];
+            }
+    
+            // If the key already exists and it's an array, push the value to the array
+            if (result.hasOwnProperty(key) && Array.isArray(result[key])) {
+                result[key].push(value);
+            } else {
+                // Otherwise, set the value directly
+                result[key] = value;
+            }
+        });
+        return result;
+      }
+
+
+
+      function notify(title,text,icon)
+      {
+           Swal.fire({
+              title: title,
+              text: text,
+              icon: icon,
+              // showCancelButton: true,
+              confirmButtonColor: "#3085d6",
+              cancelButtonColor: "#d33",
+              confirmButtonText: "Ok"
+            }).then((result) => {
+              if (result.isConfirmed) {
+                window.location.reload();
+              }
+            });
+      }
+
+      function uuidv4() {
+        return "10000000-1000-4000-8000-100000000000".replace(/[018]/g, c =>
+          (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
+        );
+      }
+
 });

@@ -27,6 +27,14 @@ class AppointmentController extends Controller
     }
 
 
+    public function checkTimeAvailabilty(Request $request)
+    {
+        if($check = Booking::where('date',$request->date)->where('time_id',$request->time)->exists()){
+            return response()->json(1);
+        }
+        return response()->json(0);
+    }
+
     private function processAvailableTime($date)
     {
 

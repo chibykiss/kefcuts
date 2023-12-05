@@ -22,6 +22,7 @@ Route::get('/', function () {
 
 Route::get('/appointment', [AppointmentController::class,'index'])->name('appointment');
 Route::post('/appointment', [AppointmentController::class,'getAvailableTime'])->name('appointment');
+Route::post('check_time',[AppointmentController::class,'checkTimeAvailabilty'])->name('appointment.checktime');
 
 Route::post('book', StoreBookingController::class)->name('booking.store');
 
