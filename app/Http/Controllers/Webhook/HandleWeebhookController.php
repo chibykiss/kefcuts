@@ -4,11 +4,13 @@ namespace App\Http\Controllers\Webhook;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class HandleWeebhookController extends Controller
 {
     public function __invoke(Request $request)
     {
+        Log::channel('kef')->debug('first:',collect($request)->toArray());
         $webhookConfig = new \Spatie\WebhookClient\WebhookConfig([
             'name' => 'default',
             'signing_secret' => env('PAYSTACK_SECRET'),

@@ -55,10 +55,12 @@ $(function()
           currency: 'NGN', // Use GHS for Ghana Cedis or USD for US Dollars
           ref: uuidv4(), // Replace with a reference you generated
           callback: function(response) {
+            console.log(response)
             var newdata = {
               reference: response.trxref, 
               status: response.status, 
               gateway_message: response.message, 
+              amount: payStackAmout,
               payload:response , 
               ...form
             }
