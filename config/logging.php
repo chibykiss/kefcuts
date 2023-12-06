@@ -126,6 +126,11 @@ return [
         'emergency' => [
             'path' => storage_path('logs/laravel.log'),
         ],
+        'kef' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/kef.log'),
+            'level' => 'debug',
+        ],
     ],
 
 ];

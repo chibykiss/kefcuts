@@ -49,7 +49,7 @@ $(function()
 
       function payWithPaystack(payStackAmout,form) {
         var handler = PaystackPop.setup({
-          key: 'pk_test_b5f38b1599579d6a8909219f972b462e4b30d235',
+          key: 'pk_test_e4230c9fdc8e9b4cbffbefc6a572b3583b9c06c6',
           email: document.getElementById('email').value,
           amount: payStackAmout * 100, // the amount value is multiplied by 100 to convert to the lowest currency unit
           currency: 'NGN', // Use GHS for Ghana Cedis or USD for US Dollars

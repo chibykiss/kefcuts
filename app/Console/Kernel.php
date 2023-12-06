@@ -12,6 +12,9 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule): void
     {
+        $schedule->command('model:prune', [
+            '--model' => [WebhookCall::class],
+        ])->daily();
         // $schedule->command('inspire')->hourly();
     }
 

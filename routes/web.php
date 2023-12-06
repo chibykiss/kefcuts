@@ -3,6 +3,7 @@
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StoreBookingController;
+use App\Http\Controllers\Webhook\HandleWeebhookController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,15 +21,14 @@ Route::get('/', function () {
     return view('index');
 });
 
+Route::post('paystack_webhook',HandleWeebhookController::class);
 Route::get('/appointment', [AppointmentController::class,'index'])->name('appointment');
 Route::post('/appointment', [AppointmentController::class,'getAvailableTime'])->name('appointment');
 Route::post('check_time',[AppointmentController::class,'checkTimeAvailabilty'])->name('appointment.checktime');
 
 Route::post('book', StoreBookingController::class)->name('booking.store');
 
-Route::get('storage', function(){
-    return database_path();
-});
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
