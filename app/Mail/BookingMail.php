@@ -10,6 +10,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Log;
 
 class BookingMail extends Mailable
 {
@@ -20,8 +21,9 @@ class BookingMail extends Mailable
      */
     public function __construct(
         public Booking $booking,
-        public Service $services,
-        public $message
+        public $services,
+        public $text,
+        public string $referer = 'none'
     ){}
 
     /**
@@ -30,7 +32,7 @@ class BookingMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Booking Mail',
+            subject: $this->referer === 'kefcuts' ? $this->booking->name : 'New Session Booked on Kefcuts',
         );
     }
 
@@ -39,6 +41,8 @@ class BookingMail extends Mailable
      */
     public function content(): Content
     {
+        Log::channel('kef')->info('time:',collect($this->booking->hour)->toArray());
+        Log::channel('kef')->info('service:',collect($this->booking->services)->toArray());
         return new Content(
             view: 'mail.bookmail',
         );

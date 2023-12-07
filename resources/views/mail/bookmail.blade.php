@@ -255,7 +255,7 @@
     .purchase_item {
       padding: 10px 0;
       color: #51545E;
-      font-size: 15px;
+      font-size: 12px;
       line-height: 18px;
     }
     
@@ -278,6 +278,7 @@
     .purchase_total {
       margin: 0;
       text-align: right;
+      font-size: 13px;
       font-weight: bold;
       color: #333333;
     }
@@ -461,14 +462,16 @@
                   <tr>
                     <td class="content-cell">
                       <div class="f-fallback">
-                        <h1>Hi [[Customer NAME]],</h1>
+                        <h1>Hi, {{ $referer === 'kefcuts' ? 'Kefcuts' : $booking->name }}</h1>
                         <p>{{ $message }}</p>
                         {{-- <p>Thanks for booking for a barbing session on kefcuts. Booking Details Below: </p> --}}
                         {{-- <p>This purchase will appear as “[Credit Card Statement Name]” on your credit card statement for your [credit_card_brand] ending in [credit_card_last_four]. Need to <a href="[billing_url]">update your payment information</a>?</p> --}}
                         <!-- Discount -->
-                        <h3>Booking id: <strong>b27b3ed3-8d03-4afb-bc5b-cccad0d71100</strong></h3>
-                        <h3>Booking Date: <strong>07-12-2023</strong></h3>
-                        <h3>Booking Time: <strong>09:30AM</strong></h3>
+                          <h3>Booking id: <strong>{{$booking->ref}}</strong></h3>
+                        <h3>Booking Date: <strong>{{$booking->date}}</strong></h3>
+                        <h3>Booking Time: <strong>{{$booking->hour->time}}</strong></h3>
+                        <h3>Phone: <strong>{{$booking->phone}}</strong></h3>
+                        <h3>{{$booking->message !== null && $booking->message ? 'message: '.$booking->message : '' }}</h3>
                         {{-- <table class="discount" align="center" width="100%" cellpadding="0" cellspacing="0" role="presentation">
                           <tr>
                             <td align="center">
@@ -489,10 +492,9 @@
                         <table class="purchase" width="100%" cellpadding="0" cellspacing="0" role="presentation">
                           <tr>
                             <td>
-
-                              <h3>478hrf-4878-3849hf-4784-47</h3></td>
+                              <h3>{{ $booking->ref }}</h3></td>
                             <td>
-                              <h3 class="align-right">12-10-2023</h3></td>
+                              <h3 class="align-right">{{ $booking->date }}</h3></td>
                           </tr>
                           <tr>
                             <td colspan="2">
@@ -505,20 +507,18 @@
                                     <p class="f-fallback">Amount</p>
                                   </th>
                                 </tr>
+                                  @foreach ($services as $service)
+                                  <tr>
+                                    <td width="70%" class="purchase_item"><span class="f-fallback">{{ $service->name }}</span></td>
+                                    <td class="align-right" width="30%" class="purchase_item"><span class="f-fallback">&#8358;{{ number_format($service->price,2) }}</span></td>
+                                  </tr>
+                                  @endforeach
                                 <tr>
-                                  <td width="80%" class="purchase_item"><span class="f-fallback">Hair Barbing</span></td>
-                                  <td class="align-right" width="20%" class="purchase_item"><span class="f-fallback">20,000</span></td>
-                                </tr>
-                                <tr>
-                                  <td width="80%" class="purchase_item"><span class="f-fallback">Hair Treatment</span></td>
-                                  <td class="align-right" width="20%" class="purchase_item"><span class="f-fallback">10,000</span></td>
-                                </tr>
-                                <tr>
-                                  <td width="80%" class="purchase_footer" valign="middle">
+                                  <td width="70%" class="purchase_footer" valign="middle">
                                     <p class="f-fallback purchase_total purchase_total--label">Total</p>
                                   </td>
-                                  <td width="20%" class="purchase_footer" valign="middle">
-                                    <p class="f-fallback purchase_total">30,000</p>
+                                  <td width="30%" class="purchase_footer" valign="middle">
+                                    <p class="f-fallback purchase_total">&#8358;{{ number_format(array_sum(array_column($services->toArray(), 'price')), 2) }}</p>
                                   </td>
                                 </tr>
                               </table>

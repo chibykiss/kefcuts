@@ -26,14 +26,16 @@ class MailBookingToCustomer
     {
         $booking = $event->booking;
         $services = $booking->services;
+        $hour = $booking->time;
         $data = [
             'booking' => $booking,
-            'service' => $services
+            'service' => $services,
+            'hour' => $hour
         ];
         Log::channel('kef')->debug('customer_listener',$data);
 
-        $message = 'Thanks for booking for a barbing session on kefcuts. Booking Details Below:';
+        $msg = 'Thanks for booking for a barbing session on kefcuts. Booking Details Below:';
         //send data to email
-        Mail::to($booking->email)->send(new BookingMail($booking,$services,$message));
+        Mail::to($booking->email)->send(new BookingMail($booking,$services,$msg));
     }
 }
