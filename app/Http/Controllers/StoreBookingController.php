@@ -24,7 +24,7 @@ class StoreBookingController extends Controller
             'selecttime' => 'required|numeric',
             'name' => 'required|string',
             'email' => 'required|email',
-            'amount' => 'required|numeric',
+            'price' => 'required|numeric',
             'phone' => 'required',
             'message' => 'nullable|string'
         ]);
@@ -74,7 +74,7 @@ class StoreBookingController extends Controller
          Payment::create([
             'booking_id' => $book->id,
             'trxref' => $request->reference,
-            'amount' => $request->amount,
+            'amount' => $request->price,
             'gateway_message' => $request->gateway_message,
             'payload' => $request->payload
          ]);

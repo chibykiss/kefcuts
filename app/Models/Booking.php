@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Booking extends Model
 {
@@ -14,5 +15,10 @@ class Booking extends Model
     public function payment()
     {
         return $this->hasOne(Payment::class,'booking_id','id');
+    }
+
+    public function services() : BelongsToMany
+    {
+        return $this->belongsToMany(Service::class,'booking_services','booking_id','service_id');
     }
 }

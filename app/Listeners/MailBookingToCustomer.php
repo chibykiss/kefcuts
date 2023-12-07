@@ -3,9 +3,11 @@
 namespace App\Listeners;
 
 use App\Events\PaymentMadeEvent;
+use App\Mail\BookingMail;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 
 class MailBookingToCustomer
 {
@@ -22,6 +24,16 @@ class MailBookingToCustomer
      */
     public function handle(PaymentMadeEvent $event): void
     {
-        Log::channel('kef')->debug('customer_listener',collect($event->booking)->toArray());
+        $booking = $event->booking;
+        $services = $booking->services;
+        $data = [
+            'booking' => $booking,
+            'service' => $services
+        ];
+        Log::channel('kef')->debug('customer_listener',$data);
+
+        $message = 'Thanks for booking for a barbing session on kefcuts. Booking Details Below:';
+        //send data to email
+        Mail::to($booking->email)->send(new BookingMail($booking,$services,$message));
     }
 }

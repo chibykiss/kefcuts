@@ -48,7 +48,7 @@ class ProcessPaystackWebhookJob extends SpatieProcessWebhookJob implements Shoul
             'dataid' => $data_id,
             'payload' => $event_payload
         ];
-        Log::channel('kef')->info('job:',$store);
+        //Log::channel('kef')->info('job:',$store);
         
         //get the payment itself
         $payment = Payment::where('trxref',$pay_ref);

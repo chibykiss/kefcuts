@@ -21,6 +21,10 @@ Route::get('/', function () {
     return view('index');
 });
 
+Route::get('mail', function(){
+    return view('mail.bookmail');
+});
+
 Route::post('paystack_webhook',HandleWeebhookController::class);
 Route::get('/appointment', [AppointmentController::class,'index'])->name('appointment');
 Route::post('/appointment', [AppointmentController::class,'getAvailableTime'])->name('appointment');

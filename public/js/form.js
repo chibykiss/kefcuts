@@ -60,7 +60,7 @@ $(function()
               reference: response.trxref, 
               status: response.status, 
               gateway_message: response.message, 
-              amount: payStackAmout,
+              price: payStackAmout,
               payload:response , 
               ...form
             }

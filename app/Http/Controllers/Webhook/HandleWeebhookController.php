@@ -10,7 +10,7 @@ class HandleWeebhookController extends Controller
 {
     public function __invoke(Request $request)
     {
-        Log::channel('kef')->debug('first:',collect($request)->toArray());
+       // Log::channel('kef')->debug('first:',collect($request)->toArray());
         $webhookConfig = new \Spatie\WebhookClient\WebhookConfig([
             'name' => 'default',
             'signing_secret' => env('PAYSTACK_SECRET'),
