@@ -27,7 +27,9 @@ class MailBookingToOwner
         Log::channel('kef')->debug('owner_listener',collect($event->booking)->toArray());
 
         $msg = 'you have a new booking in kefcuts.com, Booking details below';
+
+        $kefcut = env('OWNERS_EMAIL');
         
-        Mail::to()->send(new BookingMail($event->booking,$msg,'kefcuts'));
+        Mail::to($kefcut)->send(new BookingMail($event->booking,$msg,'kefcuts'));
     }
 }
