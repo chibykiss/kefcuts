@@ -21,7 +21,6 @@ class BookingMail extends Mailable
      */
     public function __construct(
         public Booking $booking,
-        public $services,
         public $text,
         public string $referer = 'none'
     ){}
@@ -41,8 +40,8 @@ class BookingMail extends Mailable
      */
     public function content(): Content
     {
-        Log::channel('kef')->info('time:',collect($this->booking->hour)->toArray());
-        Log::channel('kef')->info('service:',collect($this->booking->services)->toArray());
+        // Log::channel('kef')->info('time:',collect($this->booking->hour)->toArray());
+        // Log::channel('kef')->info('service:',collect($this->booking->services)->toArray());
         return new Content(
             view: 'mail.bookmail',
         );

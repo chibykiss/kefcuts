@@ -63,7 +63,7 @@
                                             <input type="checkbox" data-price="{{ $service->price }}" name="service_types" id="s_a1" value="{{ $service->id }}">
                                             <label for="s_a1">{{ $service->name }}</label>
                                         </div>
-                                        <p>{{ $service->price }}</p>
+                                        <p>{{ number_format($service->price,2) }}</p>
                                         </div>
                                     @endforeach
                                 </div>

@@ -36,6 +36,6 @@ class MailBookingToCustomer
 
         $msg = 'Thanks for booking for a barbing session on kefcuts. Booking Details Below:';
         //send data to email
-        Mail::to($booking->email)->send(new BookingMail($booking,$services,$msg));
+        Mail::to($booking->email)->send(new BookingMail($booking,$msg));
     }
 }

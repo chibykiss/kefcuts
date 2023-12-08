@@ -68,8 +68,9 @@ class ProcessPaystackWebhookJob extends SpatieProcessWebhookJob implements Shoul
             }
             $payment->paid = 1;
             $payment->booking->update(['payment_status' => 'paid']);
-            PaymentMadeEvent::dispatch($payment->booking);
-            Log::channel('kef')->info('booking:',collect($payment->booking)->toArray());
+            $booking_details = Booking::with('services','time')->find($payment->booking_id);
+            PaymentMadeEvent::dispatch($booking_details);
+            Log::channel('kef')->info('booking:',collect($booking_details)->toArray());
         }
 
         $payment->event_type = $event_type;

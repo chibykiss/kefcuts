@@ -463,7 +463,7 @@
                     <td class="content-cell">
                       <div class="f-fallback">
                         <h1>Hi, {{ $referer === 'kefcuts' ? 'Kefcuts' : $booking->name }}</h1>
-                        <p>{{ $message }}</p>
+                        <p>{{ $text }}</p>
                         {{-- <p>Thanks for booking for a barbing session on kefcuts. Booking Details Below: </p> --}}
                         {{-- <p>This purchase will appear as “[Credit Card Statement Name]” on your credit card statement for your [credit_card_brand] ending in [credit_card_last_four]. Need to <a href="[billing_url]">update your payment information</a>?</p> --}}
                         <!-- Discount -->
@@ -507,7 +507,7 @@
                                     <p class="f-fallback">Amount</p>
                                   </th>
                                 </tr>
-                                  @foreach ($services as $service)
+                                  @foreach ($booking->services as $service)
                                   <tr>
                                     <td width="70%" class="purchase_item"><span class="f-fallback">{{ $service->name }}</span></td>
                                     <td class="align-right" width="30%" class="purchase_item"><span class="f-fallback">&#8358;{{ number_format($service->price,2) }}</span></td>
@@ -518,7 +518,7 @@
                                     <p class="f-fallback purchase_total purchase_total--label">Total</p>
                                   </td>
                                   <td width="30%" class="purchase_footer" valign="middle">
-                                    <p class="f-fallback purchase_total">&#8358;{{ number_format(array_sum(array_column($services->toArray(), 'price')), 2) }}</p>
+                                    <p class="f-fallback purchase_total">&#8358;{{ number_format(array_sum(array_column($booking->services->toArray(), 'price')), 2) }}</p>
                                   </td>
                                 </tr>
                               </table>

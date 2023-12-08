@@ -25,6 +25,6 @@ class Booking extends Model
 
     public function time() : BelongsTo
     {
-        return $this->belongsTo(Time::class,'time_id');
+        return $this->belongsTo(Time::class, 'time_id');
     }
 }

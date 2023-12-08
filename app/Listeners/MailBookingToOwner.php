@@ -3,9 +3,11 @@
 namespace App\Listeners;
 
 use App\Events\PaymentMadeEvent;
+use App\Mail\BookingMail;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 
 class MailBookingToOwner
 {
@@ -23,5 +25,9 @@ class MailBookingToOwner
     public function handle(PaymentMadeEvent $event): void
     {
         Log::channel('kef')->debug('owner_listener',collect($event->booking)->toArray());
+
+        $msg = 'you have a new booking in kefcuts.com, Booking details below';
+        
+        Mail::to()->send(new BookingMail($event->booking,$msg,'kefcuts'));
     }
 }
