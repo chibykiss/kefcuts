@@ -24,7 +24,7 @@ class MailBookingToOwner
      */
     public function handle(PaymentMadeEvent $event): void
     {
-        Log::channel('kef')->debug('owner_listener',collect($event->booking)->toArray());
+       // Log::channel('kef')->debug('owner_listener',collect($event->booking)->toArray());
 
         $msg = 'you have a new booking in kefcuts.com, Booking details below';
 

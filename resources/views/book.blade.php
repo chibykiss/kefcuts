@@ -7,7 +7,7 @@
     <title>Kefcuts - Book Appointment</title>
     <link href="test/bootstrap.min.css" rel="stylesheet" type="text/css" id="bootstrap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-      <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon" />
+      <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
     <!-- <link href="test/mdb.min.css" rel="stylesheet" type="text/css" id="mdb" > -->
     <!-- <link href="test/plugins.css" rel="stylesheet" type="text/css" > -->
     <link href="{{ asset('test/style.css') }}" rel="stylesheet" type="text/css" >

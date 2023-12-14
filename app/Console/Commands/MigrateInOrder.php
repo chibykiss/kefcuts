@@ -38,7 +38,8 @@ class MigrateInOrder extends Command
             'database/migrations/2023_12_04_014409_add_columns_to_bookings_table.php',
             'database/migrations/2023_12_05_164945_create_payments_table.php',
             'database/migrations/2023_12_05_210153_create_webhook_calls_table.php',
-            'database/migrations/2023_12_14_145200_create_subscribers_table.php'
+            'database/migrations/2023_12_14_145200_create_subscribers_table.php',
+            'database/migrations/2023_12_14_181111_create_jobs_table.php'
         ];
 
         foreach($migrations as $migration)

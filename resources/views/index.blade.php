@@ -9,7 +9,7 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="UNIQUE - Barber Shop HTML Template">
     <meta name="author" content="">
-    <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
     
     <!-- Necessary CSS Files -->
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">            											<!-- Bootstrap CSS Only GRID -->

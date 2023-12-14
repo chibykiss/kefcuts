@@ -469,7 +469,7 @@
                         <!-- Discount -->
                           <h3>Booking id: <strong>{{$booking->ref}}</strong></h3>
                         <h3>Booking Date: <strong>{{$booking->date}}</strong></h3>
-                        <h3>Booking Time: <strong>{{$booking->hour->time}}</strong></h3>
+                        <h3>Booking Time: <strong>{{$booking->time->time}}</strong></h3>
                         <h3>Phone: <strong>{{$booking->phone}}</strong></h3>
                         <h3>{{$booking->message !== null && $booking->message ? 'message: '.$booking->message : '' }}</h3>
                         {{-- <table class="discount" align="center" width="100%" cellpadding="0" cellspacing="0" role="presentation">
