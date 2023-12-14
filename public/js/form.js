@@ -2,6 +2,44 @@
 $(function()
 {
 
+  //handles newletter subscription
+  $('#newsltter-sub').submit(function(e){
+    e.preventDefault()
+   
+
+
+    $form = $(this).serializeArray()
+
+    var email = arrayToObject($form)
+
+    $.ajax({
+      url: '/subscribe',
+      dataType: "json",
+      type: "Post",
+      async: true,
+      data: email,
+      success: function (data) {
+          //console.log(data)
+          if(data === 1)
+          {
+            $('#msghere').html(`<span style="color:#fff;">subscribed</span>`)
+          }else if(data === 2){
+            $('#msghere').html(`<span style="color:#fff;">Already subscribed</span>`)
+          }else{
+            $('#msghere').html(`<span style="color:#fff;">Unknown Error Occured</span>`)
+          }
+         // notify("Already Booked","time has been booked","warning")
+      },
+      error: function (xhr, exception, err) {
+        //console.log(err);
+        if(xhr.status === 422){
+           $('#msghere').html(`<span style="color:#fff;">${xhr?.responseJSON?.message}</span>`)
+        }
+      }
+  }); 
+    //console.log(email)
+  })
+  //handles booking submission
 	$('#contact_form').submit(function(e)
       {
         e.preventDefault();

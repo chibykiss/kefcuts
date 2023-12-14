@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content ="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=0, user-scalable=no" />
+     <meta name="_token" content="{{ csrf_token() }}">
     <meta name="format-detection" content="telephone=no">
     <title> KEFCUTS </title>
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
@@ -207,6 +208,11 @@
                    <div class="story-text">
                         <div class="story-text-left">
                              <p class="big-text">Welcome to KEFCUTS, where passion meets style! We take pride in being more than just your average barbershop – we're a haven for self-expression and confidence.</p>
+                             <p>At KEF CUTS, we turn haircuts into masterpieces, creating looks that are as unique as you are. Experience the epitome of style and sophistication.
+
+ Our barbers blend precision with passion, ensuring each cut is a work of art. Trust us to sculpt your hair with finesse and leave you feeling truly pampered.
+
+Immerse yourself in the luxury of our salon ambiance. At KEF CUTS, we believe that a great haircut goes hand in hand with a relaxing atmosphere.</p><br>
                               <p>What sets us apart is our commitment to creating a comfortable and welcoming environment. Step into our salon, and you'll instantly feel at ease. Our space is designed to be a retreat from the hustle and bustle, a place where you can relax, unwind, and leave feeling refreshed and confident.</p>
                              
                         </div>
@@ -589,7 +595,7 @@ Loremsimply dummy text of the printing and typeseing industry.</p>
                                                 <div class="price-list-service-price">5,000
                                                 </div>
 											</div>
-                                            <div class="price-list-discription"> <p> Lorem Ipsum is ofthe printorm Ipsum is simply. </p>
+                                             <div class="price-list-discription"> <p> </p>
                                             </div>
                                         </div>
 	                                </div>
@@ -601,7 +607,7 @@ Loremsimply dummy text of the printing and typeseing industry.</p>
                                                 <div class="price-list-service-price">7,500
                                                 </div>
 											</div>
-                                            <div class="price-list-discription"> <p>Lorem Ipsum is simply dummy text ofthe Printorm Ipsum is simply. </p>
+                                            <div class="price-list-discription"> <p></p>
                                             </div>
                                         </div>
 	                                </div>
@@ -616,7 +622,7 @@ Loremsimply dummy text of the printing and typeseing industry.</p>
                                                 <div class="price-list-service-price">4,500
                                                 </div>
 											</div>
-                                            <div class="price-list-discription"> <p> Lorem Ipsum is simply dummy text ofthe printorm Ipsum is simply. </p>
+                                            <div class="price-list-discription"> <p> </p>
                                             </div>
                                         </div>
 	                                </div>
@@ -628,7 +634,7 @@ Loremsimply dummy text of the printing and typeseing industry.</p>
                                                 <div class="price-list-service-price">8,500
                                                 </div>
 											</div>
-                                            <div class="price-list-discription"> <p>Hair Color Lorem Ipsum is simply dummy text ofthe Printorm Ipsum is simply. </p>
+                                            <div class="price-list-discription"> <p></p>
                                             </div>
                                         </div>
 	                                </div>
@@ -643,7 +649,7 @@ Loremsimply dummy text of the printing and typeseing industry.</p>
                                                 <div class="price-list-service-price">12,350
                                                 </div>
 											</div>
-                                            <div class="price-list-discription"> <p> Lorem Ipsum is simply dummy text ofthe printorm Ipsum is simply. </p>
+                                            <div class="price-list-discription"> <p></p>
                                             </div>
                                         </div>
 	                                </div>
@@ -655,7 +661,7 @@ Loremsimply dummy text of the printing and typeseing industry.</p>
                                                   <div class="price-list-service-price">9,500
                                                   </div>
                                                          </div>
-                                            <div class="price-list-discription"> <p>Printorm Ipsum is simplysimply dummy text is simply dummy text ofthe. </p>
+                                            <div class="price-list-discription"> <p> </p>
                                             </div>
                                         </div>
 	                                </div>
@@ -1046,7 +1052,7 @@ Loremsimply dummy text of the printing and typeseing industry.</p>
                                                 <div class="price-list-service-price">50k
                                                 </div>
 											</div>
-                                            <div class="price-list-discription"> <p> Lorem Ipsum is ofthe printorm Ipsum is simply. </p>
+                                            <div class="price-list-discription"> <p></p>
                                             </div>
                                         </div>
 	                                </div>
@@ -1058,7 +1064,7 @@ Loremsimply dummy text of the printing and typeseing industry.</p>
                                                 <div class="price-list-service-price">30k
                                                 </div>
 											</div>
-                                            <div class="price-list-discription"> <p>Lorem Ipsum is simply dummy text ofthe Printorm Ipsum is simply. </p>
+                                            <div class="price-list-discription"> <p></p>
                                             </div>
                                         </div>
 	                                </div>
@@ -1073,7 +1079,7 @@ Loremsimply dummy text of the printing and typeseing industry.</p>
                                                 <div class="price-list-service-price">10k
                                                 </div>
 											</div>
-                                            <div class="price-list-discription"> <p> Lorem Ipsum is simply dummy text ofthe printorm Ipsum is simply. </p>
+                                            <div class="price-list-discription"> <p></p>
                                             </div>
                                         </div>
 	                                </div>
@@ -1085,7 +1091,7 @@ Loremsimply dummy text of the printing and typeseing industry.</p>
                                                 <div class="price-list-service-price">20k
                                                 </div>
 											</div>
-                                            <div class="price-list-discription"> <p>Hair Color Lorem Ipsum is simply dummy text ofthe Printorm Ipsum is simply. </p>
+                                            <div class="price-list-discription"> <p></p>
                                             </div>
                                         </div>
 	                                </div>
@@ -1100,7 +1106,7 @@ Loremsimply dummy text of the printing and typeseing industry.</p>
                                                 <div class="price-list-service-price">15k
                                                 </div>
 											</div>
-                                            <div class="price-list-discription"> <p> Lorem Ipsum is simply dummy text ofthe printorm Ipsum is simply. </p>
+                                            <div class="price-list-discription"> <p></p>
                                             </div>
                                         </div>
 	                                </div>
@@ -1718,7 +1724,7 @@ Loremsimply dummy text of the printing and typeseing industry.</p>
                         </div>
                         <div class="map-top-text">
                              <span>Email Us</span>
-                             <p><a href="mailto:youremailid@gmail.com" title="youremailid@gmail.com">youremailid@gmail.com</a></p>
+                             <p><a href="mailto:info@kefcuts.com" title="info@kefcuts.com">info@kefcuts.com</a></p>
                         </div>
                    </div>
                    <div class="map-top-block">
@@ -1737,7 +1743,8 @@ Loremsimply dummy text of the printing and typeseing industry.</p>
 </section>
 
 <div class="map-img">
-	<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d48331.30547831374!2d-74.05590848053964!3d40.79046415662649!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25804d4293b57%3A0x5efe2629bb9f9381!2sNorth+Bergen%2C+NJ%2C+USA!5e0!3m2!1sen!2sin!4v1503222998458" frameborder="0" allowfullscreen></iframe>
+	{{-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d48331.30547831374!2d-74.05590848053964!3d40.79046415662649!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25804d4293b57%3A0x5efe2629bb9f9381!2sNorth+Bergen%2C+NJ%2C+USA!5e0!3m2!1sen!2sin!4v1503222998458" frameborder="0" allowfullscreen></iframe> --}}
+     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.387665274832!2d3.5761635759143076!3d6.472481123752195!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103bf7ea5e4e7123%3A0x299a888ed73ffcbb!2sLegend%20Mall!5e0!3m2!1sen!2sng!4v1702564939655!5m2!1sen!2sng"allowfullscreen loading="lazy" frameborder="0" referrerpolicy="no-referrer-when-downgrade"></iframe>
 </div>
 
 <!-- Footer section -->
@@ -1762,13 +1769,16 @@ Loremsimply dummy text of the printing and typeseing industry.</p>
                    </ul>
               </div>
               <div class="subscribe-us clearfix">
-                   <h5>Subscribe us</h5>
-                   <p>Subscribe to our Newsletter to get first Gift voucher by Unique Barber</p>
+                   <h5>Subscribe</h5>
+                   <p>Subscribe to our Newsletter Inorder to be Notified of events or discounts</p>
                    <div class="subscribe-email">
-                        <input type="text" name="Enter your email" placeholder="Enter your email">
+                    <form id="newsltter-sub">
+                        <input type="text" name="email" placeholder="Enter your email" required>
                         <input type="submit" name="submit">
+                        <label id="msghere"></label>
+                    </form>
                    </div>
-                   <div class="social-ic">
+                   {{-- <div class="social-ic">
                         <ul>
                             <li><a href="#" title="Facebook"><i class="icofont icofont-social-facebook"></i></a></li>
                             <li><a href="#" title="Twitter"><i class="icofont icofont-social-twitter"></i></a></li>
@@ -1776,7 +1786,7 @@ Loremsimply dummy text of the printing and typeseing industry.</p>
                             <li><a href="#" title="Pintrest"><i class="icofont icofont-social-pinterest"></i></a></li>
                             <li><a href="#" title="youtube"><i class="icofont icofont-social-youtube-play"></i></a></li>
                         </ul> 
-                   </div>
+                   </div> --}}
                    <p class="copyright">&copy; 2023 Made by <span><a href="#" target="_blank"> @vibeTek</a></span></p>
               </div>
          </div>
@@ -1791,6 +1801,14 @@ Loremsimply dummy text of the printing and typeseing industry.</p>
 <script type="text/javascript" src="{{ asset('js/slick.min.js') }}"></script>					<!--Service slider jquery-->
 <script type="text/javascript" src="{{ asset('js/custom.js') }}"></script>						<!--custom jquery Reference-->
 <script type="text/javascript" src="{{ asset('js/tab.js') }}"></script>						<!--Tab jquery-->
+<script>
+$.ajaxSetup({
+  headers: {
+      'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+  }
+});
+</script>
+<script src="{{ 'js/form.js' }}"></script>
 
 </body>
 </html>
