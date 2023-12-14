@@ -8,6 +8,16 @@ $(function()
         
         var totalPrice = 0;
         
+        //Make sure at least one service is selected
+        if($("input[name='service_types']:checked").length === 0){
+          return alert('pls select a service first');
+        }
+
+        //make sure its only one time selected
+        if($("input[name='selecttime']:checked").length !== 1){
+          return alert('pls select a time')
+        }
+        
         // Use :checked selector to get checked checkboxes
         $("input[name='service_types']:checked").each(function () {
           var price = parseFloat($(this).data('price')) || 0;

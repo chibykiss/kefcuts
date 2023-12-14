@@ -136,7 +136,7 @@
                         </ul>
                    </div>
                    <div class="logo">
-                        <a href="index.html" title="Barber Shop"><img src="images/logo.png" alt="logo"></a>
+                        <a href="index.html" title="Barber Shop"><img src="images/keflogo.png" alt="logo"></a>
                    </div>
                    <div class="table-cell">
                         <ul>
@@ -1744,7 +1744,7 @@ Loremsimply dummy text of the printing and typeseing industry.</p>
 <section class="footer">
 	<div class="container">
 		<div class="footer-logo">
-    		<img src="images/footer-logo.png" alt="footerlogo">
+    		<img src="images/keflogo.png" alt="footerlogo">
     	</div>
 		<div class="row">
               <div class="footer-nav">
@@ -1777,7 +1777,7 @@ Loremsimply dummy text of the printing and typeseing industry.</p>
                             <li><a href="#" title="youtube"><i class="icofont icofont-social-youtube-play"></i></a></li>
                         </ul> 
                    </div>
-                   <p class="copyright">&copy; 2023 Made by <span><a href="#" target="_blank"> @vibeTech</a></span></p>
+                   <p class="copyright">&copy; 2023 Made by <span><a href="#" target="_blank"> @vibeTek</a></span></p>
               </div>
          </div>
 		<a href="#top" class="scroll-top">go top</a>

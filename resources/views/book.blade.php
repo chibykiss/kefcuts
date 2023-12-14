@@ -103,17 +103,17 @@
                             <div class="col-lg-6">
                                 <div id='name_error' class='error'>Please enter your name.</div>
                                 <div class="mb25">
-                                    <input type='text' name='name' id='name' class="form-control" placeholder="Your Name">
+                                    <input type='text' name='name' id='name' class="form-control" placeholder="Your Name" required>
                                 </div>
 
                                 <div id='email_error' class='error'>Please enter your valid E-mail ID.</div>
                                 <div class="mb25">
-                                    <input type='email' name='email' id='email' class="form-control" placeholder="Your Email">
+                                    <input type='email' name='email' id='email' class="form-control" placeholder="Your Email" required>
                                 </div>
 
                                 <div id='phone_error' class='error'>Please enter your phone number.</div>
                                 <div class="mb25">
-                                    <input type='text' name='phone' id='phone' class="form-control" placeholder="Your Phone">
+                                    <input type='text' name='phone' id='phone' class="form-control" placeholder="Your Phone" required>
                                 </div>
                             </div>
                             <div class="col-lg-6">
