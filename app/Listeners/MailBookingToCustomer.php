@@ -41,7 +41,7 @@ class MailBookingToCustomer
 
         $data = $event->booking->toArray();
 
-        $pdf_name = Str::slug($data['name'], '-').'-'.$data['id'].'-'.time().'.pdf';  
+        $pdf_name = Str::slug($data['name'], '-').'-'.'cus'.'-'.$data['id'].'-'.time().'.pdf';  
 
         Pdf::loadView('pdf.bookingpdf',['booking' => $data, 'referer' => 'customer', 'text' => $msg])->save(storage_path("app/public/customer/$pdf_name"));
         
@@ -50,7 +50,7 @@ class MailBookingToCustomer
                 'cus_pdf' => $pdf_name
         ]);
         if($db){
-            Mail::to($data['email'])->send(new BookingMail($event->booking,$msg));
+            Mail::to($data['email'])->send(new BookingMail($event->booking,$msg,"customer/$pdf_name"));
         }else{
             Log::channel('kef')->debug('the pdf could not be inserted to db');
         }

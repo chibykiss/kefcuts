@@ -7,6 +7,7 @@ use App\Models\Service;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
+use Illuminate\Mail\Mailables\Attachment;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
@@ -22,7 +23,8 @@ class BookingMail extends Mailable
     public function __construct(
         public Booking $booking,
         public $text,
-        public string $referer = 'none'
+        public $pdf,
+        public string $referer = 'none',
     ){}
 
     /**
@@ -54,6 +56,10 @@ class BookingMail extends Mailable
      */
     public function attachments(): array
     {
-        return [];
+        return [
+            Attachment::fromPath(storage_path("app/public/$this->pdf"))
+                        ->as($this->pdf)
+                        ->withMime('application/pdf')
+        ];
     }
 }
