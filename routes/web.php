@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AppointmentController;
+use App\Http\Controllers\CheckPdfController;
 use App\Http\Controllers\NewsletterSubscriptionController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StoreBookingController;
@@ -30,6 +31,7 @@ Route::post('paystack_webhook',HandleWeebhookController::class);
 Route::get('/appointment', [AppointmentController::class,'index'])->name('appointment');
 Route::post('/appointment', [AppointmentController::class,'getAvailableTime'])->name('appointment');
 Route::post('check_time',[AppointmentController::class,'checkTimeAvailabilty'])->name('appointment.checktime');
+Route::get('pdf', [CheckPdfController::class,'getPdf']);
 Route::post('subscribe', NewsletterSubscriptionController::class);
 
 Route::post('book', StoreBookingController::class)->name('booking.store');

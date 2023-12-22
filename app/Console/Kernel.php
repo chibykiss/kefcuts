@@ -16,6 +16,7 @@ class Kernel extends ConsoleKernel
             '--model' => [WebhookCall::class],
         ])->daily();
         // $schedule->command('inspire')->hourly();
+        $schedule->command('queue:work --stop-when-empty')->everyMinute()->withoutOverlapping();
     }
 
     /**

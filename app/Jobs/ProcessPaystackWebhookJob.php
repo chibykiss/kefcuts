@@ -5,6 +5,7 @@ namespace App\Jobs;
 use App\Events\PaymentMadeEvent;
 use App\Models\Booking;
 use App\Models\Payment;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -69,6 +70,8 @@ class ProcessPaystackWebhookJob extends SpatieProcessWebhookJob implements Shoul
             $payment->paid = 1;
             $payment->booking->update(['payment_status' => 'paid']);
             $booking_details = Booking::with('services','time')->find($payment->booking_id);
+            //make pdf and store it
+           // Pdf::loadView('pdf.bookingpdf',);
             PaymentMadeEvent::dispatch($booking_details);
             Log::channel('kef')->info('booking:',collect($booking_details)->toArray());
         }

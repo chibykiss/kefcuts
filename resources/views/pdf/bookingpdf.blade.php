@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />    
     <meta name="x-apple-disable-message-reformatting" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="color-scheme" content="light dark" />
@@ -467,11 +467,11 @@
                         {{-- <p>Thanks for booking for a barbing session on kefcuts. Booking Details Below: </p> --}}
                         {{-- <p>This purchase will appear as “[Credit Card Statement Name]” on your credit card statement for your [credit_card_brand] ending in [credit_card_last_four]. Need to <a href="[billing_url]">update your payment information</a>?</p> --}}
                         <!-- Discount -->
-                          <h3>Booking id: <strong>{{$booking->ref}}</strong></h3>
-                        <h3>Booking Date: <strong>{{$booking->date}}</strong></h3>
-                        <h3>Booking Time: <strong>{{$booking->time->time}}</strong></h3>
-                        <h3>Phone: <strong>{{$booking->phone}}</strong></h3>
-                        <h3>{{$booking->message !== null && $booking->message ? 'message: '.$booking->message : '' }}</h3>
+                          <h3>Booking id: <strong>{{$booking['ref']}}</strong></h3>
+                        <h3>Booking Date: <strong>{{$booking['date']}}</strong></h3>
+                        <h3>Booking Time: <strong>{{$booking['time']}}</strong></h3>
+                        <h3>Phone: <strong>{{$booking['phone']}}</strong></h3>
+                        <h3>{{$booking['message'] !== null && $booking['message'] ? 'message: '.$booking['message'] : '' }}</h3>
                         {{-- <table class="discount" align="center" width="100%" cellpadding="0" cellspacing="0" role="presentation">
                           <tr>
                             <td align="center">
@@ -492,9 +492,9 @@
                         <table class="purchase" width="100%" cellpadding="0" cellspacing="0" role="presentation">
                           <tr>
                             <td>
-                              <h3>{{ $booking->ref }}</h3></td>
+                              <h3>{{ $booking['ref'] }}</h3></td>
                             <td>
-                              <h3 class="align-right">{{ $booking->date }}</h3></td>
+                              <h3 class="align-right">{{ $booking['date'] }}</h3></td>
                           </tr>
                           <tr>
                             <td colspan="2">
@@ -507,10 +507,10 @@
                                     <p class="f-fallback">Amount</p>
                                   </th>
                                 </tr>
-                                  @foreach ($booking->services as $service)
+                                  @foreach ($booking['services'] as $service)
                                   <tr>
-                                    <td width="70%" class="purchase_item"><span class="f-fallback">{{ $service->name }}</span></td>
-                                    <td class="align-right" width="30%" class="purchase_item"><span class="f-fallback">&#8358;{{ number_format($service->price,2) }}</span></td>
+                                    <td width="70%" class="purchase_item"><span class="f-fallback">{{ $service['name'] }}</span></td>
+                                    <td class="align-right" width="30%" class="purchase_item"><span class="f-fallback">{{ '₦'.number_format($service['price'],2) }}</span></td>
                                   </tr>
                                   @endforeach
                                 <tr>
@@ -518,7 +518,7 @@
                                     <p class="f-fallback purchase_total purchase_total--label">Total</p>
                                   </td>
                                   <td width="30%" class="purchase_footer" valign="middle">
-                                    <p class="f-fallback purchase_total">&#8358;{{ number_format(array_sum(array_column($booking->services->toArray(), 'price')), 2) }}</p>
+                                    <p class="f-fallback purchase_total">{{ '₦'.number_format(array_sum(array_column($booking['services'], 'price')), 2) }}</p>
                                   </td>
                                 </tr>
                               </table>
@@ -550,7 +550,7 @@
                         <table class="body-sub" role="presentation">
                           <tr>
                             <td>
-                              <p class="f-fallback sub"><strong>Need a printable copy for your records?</strong> You can <a href="[action_url]">download a PDF version</a>.</p>
+                              <p class="f-fallback sub"><strong>Need a printable copy for your records eeh  ?</strong> You can <a href="[action_url]">download a PDF version</a>.</p>
                               {{-- <p class="f-fallback sub">Moved recently? Have a new credit card? You can easily <a href="[billing_url]">update your billing information</a>.</p> --}}
                             </td>
                           </tr>
