@@ -50,7 +50,7 @@ class MailBookingToCustomer
                 'cus_pdf' => $pdf_name
         ]);
         if($db){
-            Mail::to($data['email'])->send(new BookingMail($event->booking,$msg,"customer/$pdf_name"));
+            Mail::to($data['email'])->send(new BookingMail($event->booking,$msg,$pdf_name));
         }else{
             Log::channel('kef')->debug('the pdf could not be inserted to db');
         }

@@ -56,8 +56,9 @@ class BookingMail extends Mailable
      */
     public function attachments(): array
     {
+        $dpath = $this->referer === 'kefcuts' ? 'kefcuts' : 'customer';
         return [
-            Attachment::fromPath(storage_path("app/public/$this->pdf"))
+            Attachment::fromPath(storage_path("app/public/$dpath/$this->pdf"))
                         ->as($this->pdf)
                         ->withMime('application/pdf')
         ];

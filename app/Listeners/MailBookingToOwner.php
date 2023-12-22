@@ -44,7 +44,7 @@ class MailBookingToOwner
             'kef_pdf' => $pdf_name
         ]);
         if($db){
-            Mail::to($kefcut)->send(new BookingMail($event->booking,$msg,"kefcuts/$pdf_name",'kefcuts'));
+            Mail::to($kefcut)->send(new BookingMail($event->booking,$msg,$pdf_name,'kefcuts'));
         }else{
             Log::channel('kef')->debug('the pdf could not be inserted to db');
         }
