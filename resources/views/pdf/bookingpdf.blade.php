@@ -469,7 +469,7 @@
                         <!-- Discount -->
                           <h3>Booking id: <strong>{{$booking['ref']}}</strong></h3>
                         <h3>Booking Date: <strong>{{$booking['date']}}</strong></h3>
-                        <h3>Booking Time: <strong>{{$booking['time']}}</strong></h3>
+                        <h3>Booking Time: <strong>{{$booking['time']['time']}}</strong></h3>
                         <h3>Phone: <strong>{{$booking['phone']}}</strong></h3>
                         <h3>{{$booking['message'] !== null && $booking['message'] ? 'message: '.$booking['message'] : '' }}</h3>
                         {{-- <table class="discount" align="center" width="100%" cellpadding="0" cellspacing="0" role="presentation">
@@ -550,8 +550,8 @@
                         <table class="body-sub" role="presentation">
                           <tr>
                             <td>
-                              <p class="f-fallback sub"><strong>Need a printable copy for your records eeh  ?</strong> You can <a href="[action_url]">download a PDF version</a>.</p>
-                              {{-- <p class="f-fallback sub">Moved recently? Have a new credit card? You can easily <a href="[billing_url]">update your billing information</a>.</p> --}}
+                              <p class="f-fallback sub"><strong>Need a printable copy for your records eeh  ?</strong> You can <a href="[action_url]">download a PDF version</a></p>
+                              {{-- <p class="f-fallback sub">Moved recently? Have a new credit card? You can easily <a href="[billing_url]">update your billing information</a></p> --}}
                             </td>
                           </tr>
                         </table>

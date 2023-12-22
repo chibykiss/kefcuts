@@ -35,18 +35,18 @@ class MailBookingToOwner
 
         $data = $event->booking->toArray();
 
-        $pdf_name = Str::slug($data['name'], '-').'-'.$data['id'].time().'.pdf';  
+        $pdf_name = Str::slug($data['name'], '-').'-'.$data['id'].'-'.time().'.pdf';  
 
-        Pdf::loadView('pdf.bookingpdf',['booking' => $data, 'referer' => 'kefcuts', 'text' => $msg])->save(storage_path("app/public/pdf/$pdf_name"));
+        Pdf::loadView('pdf.bookingpdf',['booking' => $data, 'referer' => 'kefcuts', 'text' => $msg])->save(storage_path("app/public/kefcuts/$pdf_name"));
 
         //save to db
         $db = Booking::where('id',$data['id'])->update([
-            'pdf' => $pdf_name
+            'kef_pdf' => $pdf_name
         ]);
         if($db){
             Mail::to($kefcut)->send(new BookingMail($event->booking,$msg,'kefcuts'));
         }else{
-            Log::channel('kefcut')->debug('the pdf could not be inserted to db');
+            Log::channel('kef')->debug('the pdf could not be inserted to db');
         }
     }
 }

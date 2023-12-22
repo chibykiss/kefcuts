@@ -20,7 +20,8 @@ return new class extends Migration
             $table->string('name');
             $table->string('phone');
             $table->text('message')->nullable();
-            $table->string('pdf')->nullable();
+            $table->string('cus_pdf')->nullable();
+            $table->string('kef_pdf')->nullable();
             $table->unique(['date','time_id'],'unique_book');
             $table->foreign('time_id')->references('id')->on('times');
             $table->timestamps();
